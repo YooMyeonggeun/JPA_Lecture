@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.*;
+
 @Entity
 @Table(name = "orders")
 @Getter
@@ -19,14 +21,14 @@ public class Order {
     @Column(name = "order_id")
     private Long id; //고유번호
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
     private Member member; // member테이블과 조인 역할
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>(); //
 
-    @OneToOne
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name="delivery_id")
     private Delivery delivery; //
 
