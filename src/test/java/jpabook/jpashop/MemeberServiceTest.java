@@ -30,7 +30,7 @@ public class MemeberServiceTest {
     EntityManager em;
 
     @Test
-    @Rollback(false)
+//    @Rollback(false)
     public void 회원가입() throws Exception {
         //given
         Member member = new Member();
