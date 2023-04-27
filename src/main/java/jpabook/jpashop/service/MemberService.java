@@ -22,10 +22,12 @@ public class MemberService {
         memberRepository.save(member);
         return member.getId();
     }
+    
+    //중복회원 검증 메소드
     private void validateDuplicateMember(Member member) {
         List<Member> findMembers = memberRepository.findByName(member.getName());
         if(!findMembers.isEmpty()){
-            throw new IllegalArgumentException("이미 존재하는 회원입니다");
+            throw new IllegalStateException("이미 존재하는 회원입니다");
         }
     }
 
